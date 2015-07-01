@@ -34,15 +34,28 @@ awesomeIndex: 6
 function avgAwesomeIndex() {
   var awesomeList = _.pluck(programmers, 'awesomeIndex');
   var i = 0, sum = 0, len = awesomeList.length;
-  _.forEach(awesomeList, function(){
-    if (isNaN(awesomeList[i]) === false) {
-      sum += awesomeList[i];
+
+  //use lodash filter function instead of doing isNaN
+
+  _.filter(awesomeList, function(n) {
+    if (isNaN(n) === false) {
+      sum += awesomeList[n];
     }
-    i++;
-  });
-  return sum/len;
+  })
+
+  //_.forEach(awesomeList, function(){
+  //  if (isNaN(awesomeList[i]) === false) {
+  //    sum += awesomeList[i];
+  //  }
+  //  i++;
+  //});
+
+  console.log(sum/len);
+
+  //return sum/len;
 }
 
-$(function() {
-  $('#awesome-index').html(mean());
-})
+
+//$(function() {
+//  $('#awesome-index').html(mean());
+//})
